@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ĞºÑƒ ÑÑ‚Ğ¾ Ğ±Ğ¾Ñ‚'
+    mess = 'êó ıòî áîò'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -36,5 +36,5 @@ def handle_text(message):
 
 bot.polling(none_stop=True)
 
-print("ĞĞĞ¤ĞĞĞ¯Ğ¯Ğ¯Ğ¯Ğ¯Ğ¯Ğ¯ ĞĞ™ Ğ‘Ğ¯Ğ”Ğ Ğ‘Ğ¯Ğ”Ğ Ğ¡ĞšĞĞ—ĞšĞ˜ Ğ£ĞšĞ ĞĞ›Ğ˜!!!!!!!")
-print('Ğ¡Ğ¿Ğ°Ñ€Ñ‚Ğ°Ğº - Ğ§ĞµĞ¼Ğ¿Ğ¸Ğ¾Ğ½')
+print("ÍÀÔÀÍßßßßßßß ÎÉ ÁßÄÀ ÁßÄÀ ÑÊÀÇÊÈ ÓÊĞÀËÈ!!!!!!!")
+print('Ñïàğòàê - ×åìïèîí')
