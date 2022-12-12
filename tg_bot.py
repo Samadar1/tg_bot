@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = '�� ��� ���'
+    mess = '�� ��� ���'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -37,5 +37,3 @@ def handle_text(message):
 
 bot.polling(none_stop=True)
 
-# руслан был здесь
-# print("пиздец")
