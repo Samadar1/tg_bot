@@ -1,4 +1,4 @@
-# -*- coding: cp1251 -*-
+
 import telebot
 from telebot import types
 import random
