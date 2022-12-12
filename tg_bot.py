@@ -1,4 +1,4 @@
-import time
+# -*- coding: cp1251 -*-
 import telebot
 from telebot import types
 import random
@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = '�� ��� ���'
+    mess = 'ку это бот'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -33,10 +33,8 @@ def handle_text(message):
         multiline_str_split_list = sss.rsplit(sep='\n') 
         for s in multiline_str_split_list: 
             bot.send_message(message.chat.id,s)
+print('ыыы')
 
 
 bot.polling(none_stop=True)
 
-def hui():
-    for i in range(1, 100):
-        print("you are the best huesos of the world")
