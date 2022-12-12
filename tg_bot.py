@@ -34,8 +34,7 @@ def handle_text(message):
         for s in multiline_str_split_list: 
             bot.send_message(message.chat.id,s)
 
-print('sdsadasd')            
-print('dsdasd')
+
 bot.polling(none_stop=True)
 
 
