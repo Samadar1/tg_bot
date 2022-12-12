@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ку это бот'
+    mess = '�� ��� ���'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -38,6 +38,4 @@ def handle_text(message):
 print('dsdasd')
 bot.polling(none_stop=True)
 
-# руслан был здесь
-# def deadinside():
-#    print("i am deadinside")
+
