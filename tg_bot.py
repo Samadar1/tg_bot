@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ку это бот'
+    mess = '�� ��� ���'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -34,12 +34,6 @@ def handle_text(message):
         for s in multiline_str_split_list: 
             bot.send_message(message.chat.id,s)
 
-@bot.message_handler(content_types=["text"])
-def handle_text(message):
-    if message.text.strip() == 'start':
-        multiline_str_split_list = sss.rsplit(sep='\n') 
-        for s in multiline_str_split_list: 
-            bot.send_message(message.chat.id,s)            
 
 bot.polling(none_stop=True)
 
