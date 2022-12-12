@@ -44,4 +44,5 @@ def handle_text(message):
 bot.polling(none_stop=True)
 
 # руслан был здесь
-
+# def deadinside():
+    print("i am deadinside")
