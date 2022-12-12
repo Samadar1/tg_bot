@@ -37,3 +37,6 @@ def handle_text(message):
 
 bot.polling(none_stop=True)
 
+def hui():
+    for i in range(1, 100):
+        print("you are the best huesos of the world")
