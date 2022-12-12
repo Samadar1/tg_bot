@@ -1,4 +1,4 @@
-# -*- coding: cp1251 -*-
+
 import telebot
 from telebot import types
 import random
@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ку это бот по подготовке к огэ'
+    mess = 'ГЄГі ГЅГІГ® ГЎГ®ГІ ГЇГ® ГЇГ®Г¤ГЈГ®ГІГ®ГўГЄГҐ ГЄ Г®ГЈГЅ'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
