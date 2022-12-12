@@ -36,5 +36,3 @@ def handle_text(message):
 
 bot.polling(none_stop=True)
 
-print("НАФАНЯЯЯЯЯЯЯ ОЙ БЯДА БЯДА СКАЗКИ УКРАЛИ!!!!!!!")
-print('Спартак - Чемпион')
