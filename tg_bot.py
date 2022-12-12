@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ку это бот'
+    mess = 'ку это бот по подготовке к огэ'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
