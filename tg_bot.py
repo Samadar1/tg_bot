@@ -13,7 +13,7 @@ f.close()
 
 @bot.message_handler(commands=["start"])
 def start(message):
-    mess = 'ку это бот по подготовке к егэ'
+    mess = 'ГЄГі ГЅГІГ® ГЎГ®ГІ ГЇГ® ГЇГ®Г¤ГЈГ®ГІГ®ГўГЄГҐ ГЄ ГҐГЈГЅ'
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
@@ -38,4 +38,4 @@ def handle_text(message):
 
 bot.polling(none_stop=True)
 
-
+# СЂСѓСЃР»Р°РЅ Р±С‹Р» Р·РґРµСЃСЊ
