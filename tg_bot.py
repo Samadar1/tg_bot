@@ -35,4 +35,4 @@ def handle_text(message):
             bot.send_message(message.chat.id,s)
 
 bot.polling(none_stop=True)
-
+print('sdsd')
