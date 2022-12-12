@@ -33,6 +33,7 @@ def handle_text(message):
         multiline_str_split_list = sss.rsplit(sep='\n') 
         for s in multiline_str_split_list: 
             bot.send_message(message.chat.id,s)
+print('ыыы')
 
 
 bot.polling(none_stop=True)
