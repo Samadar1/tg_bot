@@ -35,7 +35,7 @@ def handle_text(message):
             bot.send_message(message.chat.id,s)
 
             
-
+print('dsdasd')
 bot.polling(none_stop=True)
 
 # руслан был здесь
