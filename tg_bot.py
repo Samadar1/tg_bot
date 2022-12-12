@@ -1,4 +1,4 @@
-
+import time
 import telebot
 from telebot import types
 import random
@@ -36,3 +36,4 @@ def handle_text(message):
 
 
 bot.polling(none_stop=True)
+
