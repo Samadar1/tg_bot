@@ -45,12 +45,12 @@ def func(message):
 		rand = random.randint(0,3)
 		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
 		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
-        if (message.text == answ_list[rand]):
+		if (message.text == answ_list[rand]):
             bot.send_message(message.chat.id,'Ответ правильный!', parse_mode='html')
-        else:
+		else:
             bot.send_message(message.chat.id,'Ответ неверный! Правильный ответ: ' + answ_list[rand], parse_mode='html')
 	
-    elif (message.text == "Вернуться в главное меню"):
+	elif (message.text == "Вернуться в главное меню"):
 		markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 		nomera_a = types.KeyboardButton('номера')
 		variant_a = types.KeyboardButton('составить вариант')
