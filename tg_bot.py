@@ -12,7 +12,7 @@ with open('C:\\Users\\urapo\\Documents\\GitHub\\tg_bot\\quest.txt', 'r',encoding
 		nomera_list.append(x_str)
 
 with open('C:\\Users\\urapo\\Documents\\GitHub\\tg_bot\\answ.txt', 'r',encoding='UTF-8') as file:
-	nomera_list = [x for x in file.readlines()]
+	answ_list = [x for x in file.readlines()]
 	
 		
 @bot.message_handler(commands=["start"])
