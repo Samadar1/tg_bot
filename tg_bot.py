@@ -5,7 +5,7 @@ import random
 
 bot = telebot.TeleBot('5491906660:AAFP9IUsQ6hvPsG4G48CHq2AYk3GdQKnkQc')
 
-with open('C:\\Users\\urapo\\Documents\\GitHub\\tg_bot\\acs.txt', 'r',encoding='UTF-8') as file:
+with open('C:\\Users\\urapo\\Documents\\GitHub\\tg_bot\\quest.txt', 'r',encoding='UTF-8') as file:
 	nomera_list = []
 	for x in file.readlines():
 		x_str = str(x)
