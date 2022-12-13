@@ -45,7 +45,7 @@ def func(message):
 		rand = random.randint(0,3)
 		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
 		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
-		
+
 
 
 	elif (message.text == "Вернуться в главное меню"):
