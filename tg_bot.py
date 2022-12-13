@@ -24,7 +24,7 @@ def com(message):
     variant = types.KeyboardButton('составить вариант')
     teori = types.KeyboardButton('теория к заданиям')
     markup.add(nomera,variant,teori)
-    bot.send_message(message.chat.id,'ввыбор категории', reply_markup=markup)
+    bot.send_message(message.chat.id,'выбор категории', reply_markup=markup)
 
 
 
