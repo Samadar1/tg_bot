@@ -20,18 +20,20 @@ def start(message):
 @bot.message_handler(commands=["help"])
 def com(message):
     markup = types.ReplyKeyboardMarkup()
-    start = types.KeyboardButton('start')
-    nomer1 = types.KeyboardButton('nomer1')
-    markup.add(start, nomer1)
-    bot.send_message(message.chat.id,'111', reply_markup=markup)
+    nomera = types.KeyboardButton('номера')
+    variant = types.KeyboardButton('составить вариант')
+    teori = types.KeyboardButton('теория к заданиям')
+    markup.add(nomera,variant,teori)
+    bot.send_message(message.chat.id,'ввыбор категории', reply_markup=markup)
 
 
 
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
-    if message.text.strip() == 'start':
-        multiline_str_split_list = sss.rsplit(sep='\n') 
-        for s in multiline_str_split_list: 
-            bot.send_message(message.chat.id,s)
-
+    if message.text.strip() == 'номера':
+        print('asad')
+    if message.text.strip() == 'составить вариант':
+        print('ac')   
+    if message.text.strip() == 'теория к заданиям':
+        print('abc')
 bot.polling(none_stop=True)
