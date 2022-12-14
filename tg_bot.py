@@ -121,7 +121,7 @@ def func(message):
 		flag_ans = True
 		return
 
-	elif message.text == 'номер 5':													#вывод номер5
+	elif message.text == 'номер 7':													#вывод номер7
 		rand = random.randint(30,34)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ  заглавными буквами без пробелов и запятых', parse_mode='html')
