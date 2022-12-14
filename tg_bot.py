@@ -9,7 +9,7 @@ import random
 bot = telebot.TeleBot('5491906660:AAFP9IUsQ6hvPsG4G48CHq2AYk3GdQKnkQc')
 
 rand = 0			#глобальные переменные
-flag = False
+flag_ans = False
 
 
 nomera_a = types.KeyboardButton('номера')					#кнопки осн
@@ -58,15 +58,15 @@ with open('quest.txt', 'r',encoding='UTF-8') as file:							#открытие ф
 		x_str = str(x)
 		nomera_list.append(x_str)
 
-with open('answ.txt', 'r',encoding='UTF-8') as file:
+with open('answ.txt', 'r') as file:
 	answ_list = []
 	for x in file.readlines():
 		x_str = str(x)
 		x_str = x_str.strip('\n')
 		answ_list.append(x_str)
-	
 
-		
+
+
 @bot.message_handler(commands=["start"])									#старт
 def start(message):
 	mess = 'ку это бот по подготовке к огэ. Напиши команду /buttons'
@@ -79,7 +79,7 @@ def com(message):																					#начало
 
 @bot.message_handler(content_types=["text"])											#при любом тексте
 def func(message):
-	global flag
+	global flag_ans
 	global rand 
 
 
@@ -88,46 +88,62 @@ def func(message):
 
 	elif (message.text == "след1") or (message.text =='пред2'):											#номера 6-10 стр2
 		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup2)
+		flag_ans = False
 
 	elif (message.text == "след2") :																	#номера 10-15 стр3
 		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup3)
+		flag_ans = False
 	
 	elif (message.text == "Вернуться в главное меню"):												#начало		
 		bot.send_message(message.chat.id,'Вы вернулись в главное меню', reply_markup=markup_base)
+		flag_ans = False
 
-	elif flag == False:																				#текст не распознан
-		bot.send_message(message.chat.id,'бот не распознаёт ваше сообщение', parse_mode='html')
-
-
-	if message.text == 'номер 1':													#вывод номер1
-		rand = random.randint(0,3)
+	
+	
+	elif message.text == 'номер 1':													#вывод номер1
+		rand = random.randint(0,4)
 		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
 		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
-		flag = True
-		return 
+		flag_ans = True
+		return
 
+	elif message.text == 'номер 3':													#вывод номер3
+		rand = random.randint(10,14)
+		bot.send_message(message.chat.id,nomera_list[rand])
+		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
+		flag_ans = True
+		return
 
-	if flag == True:												#проверка номера если прав
+	elif message.text == 'номер 5':													#вывод номер5
+		rand = random.randint(20,24)
+		bot.send_message(message.chat.id,nomera_list[rand])
+		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
+		flag_ans = True
+		return
+	
+	elif flag_ans == False:																				#текст не распознан
+		bot.send_message(message.chat.id,'бот не распознаёт ваше сообщение', parse_mode='html')
+
+	if flag_ans == True:												#проверка номера если прав
 		if (message.text == answ_list[rand]):
 			bot.send_message(message.chat.id,'Молодец!')
-			flag = False
+			flag_ans = False
 		else:														#вывод если неправильно номер 
 			otvet = types.InlineKeyboardMarkup(row_width=1)			
 			button1 = types.InlineKeyboardButton("Правильный ответ!", callback_data ='1')
 			otvet.add(button1)
 			bot.send_message(message.chat.id,'Ответ неправильный, если есть трудности посмотри теорию, а также можешь узнать правильный ответ.',reply_markup=otvet,parse_mode='html')
 	
+
 	
 
 @bot.callback_query_handler(func=lambda call: True)					#кнопки правильных ответов 
 def callback_inline(call):
-	global flag
+	global flag_ans
 	if call.message:
 		if call.data == "1":
 			bot.send_message(call.message.chat.id,answ_list[rand])
-			flag = False
-		if call.data == "2":
-			bot.send_message(call.message.chat.id,answ_list[rand])
+			flag_ans = False
 			
 
 bot.polling(none_stop=True)		
