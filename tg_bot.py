@@ -8,13 +8,51 @@ import random
 
 bot = telebot.TeleBot('5491906660:AAFP9IUsQ6hvPsG4G48CHq2AYk3GdQKnkQc')
 
-rand = 0
+rand = 0			#глобальные переменные
 flag = False
 
 
+nomera_a = types.KeyboardButton('номера')					#кнопки осн
+variant_a = types.KeyboardButton('составить вариант')		
+teori_a = types.KeyboardButton('теория к заданиям')
+
+nomer1 = types.KeyboardButton('номер 1')					#кнопки номеров 1- 15
+nomer2 = types.KeyboardButton('номер 2')
+nomer3 = types.KeyboardButton('номер 3')
+nomer4 = types.KeyboardButton('номер 4')
+nomer5 = types.KeyboardButton('номер 5')
+nomer6 = types.KeyboardButton('номер 6')
+nomer7 = types.KeyboardButton('номер 7')
+nomer8 = types.KeyboardButton('номер 8')
+nomer9 = types.KeyboardButton('номер 9')
+nomer10 = types.KeyboardButton('номер 10')
+nomer11 = types.KeyboardButton('номер 11')
+nomer12 = types.KeyboardButton('номер 12')
+nomer13 = types.KeyboardButton('номер 13')
+nomer14 = types.KeyboardButton('номер 14')
+nomer15 = types.KeyboardButton('номер 15')
+
+sled1 = types.KeyboardButton('след1')						#кнопки передвижения
+sled2 = types.KeyboardButton('след2')
+back = types.KeyboardButton("Вернуться в главное меню")
+pred1 = types.KeyboardButton('пред1')
+pred2 = types.KeyboardButton('пред2')
+
+markup_base = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)		#осн клавиатура
+markup_base.add(nomera_a,variant_a,teori_a)
+
+markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)			#клавиатура стр1
+markup1.add(nomer1,nomer2,nomer3,nomer4,nomer5,back,sled1)
+
+markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)			#клавиатура стр2
+markup2.add(nomer6,nomer7,nomer8,nomer9,nomer10,pred1,back,sled2)
+
+markup3 = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)			#клавиатура стр3
+markup3.add(nomer11,nomer12,nomer13,nomer14,nomer15,pred2,back)
 
 
-with open('quest.txt', 'r',encoding='UTF-8') as file:
+
+with open('quest.txt', 'r',encoding='UTF-8') as file:							#открытие фалов 1 вопросы  2 ответы
 	nomera_list = []
 	for x in file.readlines():
 		x_str = str(x)
@@ -29,63 +67,59 @@ with open('answ.txt', 'r',encoding='UTF-8') as file:
 	
 
 		
-@bot.message_handler(commands=["start"])
+@bot.message_handler(commands=["start"])									#старт
 def start(message):
 	mess = 'ку это бот по подготовке к огэ. Напиши команду /buttons'
 	bot.send_message(message.chat.id, mess, parse_mode='html')
 
 @bot.message_handler(commands=["buttons"])
-def com(message):
-	markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-	nomera = types.KeyboardButton('номера')
-	variant = types.KeyboardButton('составить вариант')
-	teori = types.KeyboardButton('теория к заданиям')
-	markup.add(nomera,variant,teori)
-	bot.send_message(message.chat.id,'выбор категории', reply_markup=markup)
+def com(message):																					#начало	
+	bot.send_message(message.chat.id,'выбор категории', reply_markup=markup_base)
 
-@bot.message_handler(content_types=["text"])
+
+@bot.message_handler(content_types=["text"])											#при любом тексте
 def func(message):
 	global flag
 	global rand 
 
-	if(message.text =='номера'):
-		markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-		nomer1 = types.KeyboardButton('номер 1')
-		nomer2 = types.KeyboardButton('номер 2')
-		nomer3 = types.KeyboardButton('номер 3')
-		back = types.KeyboardButton("Вернуться в главное меню")
-		markup.add(nomer1,nomer2,nomer3,back)
-		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup)
-	
-	elif (message.text == "Вернуться в главное меню"):
-		markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-		nomera_a = types.KeyboardButton('номера')
-		variant_a = types.KeyboardButton('составить вариант')
-		teori_a = types.KeyboardButton('теория к заданиям')
-		markup.add(nomera_a,variant_a,teori_a)
-		bot.send_message(message.chat.id,'Вы вернулись в главное меню', reply_markup=markup)
 
-	elif flag == False:
+	if(message.text =='номера') or (message.text =='пред1'):										#номера 1-5 стр1
+		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup1)
+
+	elif (message.text == "след1") or (message.text =='пред2'):											#номера 6-10 стр2
+		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup2)
+
+	elif (message.text == "след2") :																	#номера 10-15 стр3
+		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup3)
+	
+	elif (message.text == "Вернуться в главное меню"):												#начало		
+		bot.send_message(message.chat.id,'Вы вернулись в главное меню', reply_markup=markup_base)
+
+	elif flag == False:																				#текст не распознан
 		bot.send_message(message.chat.id,'бот не распознаёт ваше сообщение', parse_mode='html')
 
-	if message.text == 'номер 1':
+
+	if message.text == 'номер 1':													#вывод номер1
 		rand = random.randint(0,3)
 		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
 		bot.send_message(message.chat.id,'введите ответ', parse_mode='html')
 		flag = True
 		return 
-	if flag == True:	 
+
+
+	if flag == True:												#проверка номера если прав
 		if (message.text == answ_list[rand]):
 			bot.send_message(message.chat.id,'Молодец!')
 			flag = False
-		else:
-			otvet = types.InlineKeyboardMarkup(row_width=1)
+		else:														#вывод если неправильно номер 
+			otvet = types.InlineKeyboardMarkup(row_width=1)			
 			button1 = types.InlineKeyboardButton("Правильный ответ!", callback_data ='1')
 			otvet.add(button1)
 			bot.send_message(message.chat.id,'Ответ неправильный, если есть трудности посмотри теорию, а также можешь узнать правильный ответ.',reply_markup=otvet,parse_mode='html')
 	
 	
-@bot.callback_query_handler(func=lambda call: True)
+
+@bot.callback_query_handler(func=lambda call: True)					#кнопки правильных ответов 
 def callback_inline(call):
 	global flag
 	if call.message:
@@ -96,8 +130,4 @@ def callback_inline(call):
 			bot.send_message(call.message.chat.id,answ_list[rand])
 			
 
-
-
-	
-
-bot.polling(none_stop=True)
+bot.polling(none_stop=True)		
