@@ -101,28 +101,28 @@ def func(message):
 	
 	
 	elif message.text == 'номер 1':													#вывод номер1
-		rand = random.randint(0,4)
+		rand = random.randint(1,5)
 		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
 		bot.send_message(message.chat.id,'введите ответ слово как оно указано в тексте', parse_mode='html')
 		flag_ans = True
 		return
 
 	elif message.text == 'номер 3':													#вывод номер3
-		rand = random.randint(10,14)
+		rand = random.randint(13,17)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
 		flag_ans = True
 		return
 
 	elif message.text == 'номер 5':													#вывод номер5
-		rand = random.randint(20,24)
+		rand = random.randint(25,29)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
 		flag_ans = True
 		return
 
 	elif message.text == 'номер 7':													#вывод номер7
-		rand = random.randint(30,34)
+		rand = random.randint(37,41)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ  заглавными буквами без пробелов и запятых', parse_mode='html')
 		flag_ans = True
