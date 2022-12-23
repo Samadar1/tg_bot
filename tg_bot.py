@@ -58,7 +58,7 @@ with open('quest.txt', 'r',encoding='UTF-8') as file:							#открытие ф
 		x_str = str(x)
 		nomera_list.append(x_str)
 
-with open('answ.txt', 'r') as file:
+with open('answ.txt',encoding='UTF-8') as file:
 	answ_list = []
 	for x in file.readlines():
 		x_str = str(x)
