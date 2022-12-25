@@ -195,5 +195,3 @@ def callback_inline(call):
 
 bot.polling(none_stop=True)		
 
-x = random.randint()
-print(x)
