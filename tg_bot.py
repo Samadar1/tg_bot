@@ -67,7 +67,7 @@ with open('answ.txt',encoding='UTF-8') as file:
 		answ_list.append(x_str)
 
 n_4 = os.listdir("nom4")
-print(n_4)
+
 
 
 @bot.message_handler(commands=["start"])									#старт
@@ -135,8 +135,10 @@ def func(message):
 		return
 
 	elif message.text == 'номер 4':													#вывод номер4
-		rand = random.randint(0,4)
-		bot.send_photo(message.chat_id, photo=open(n_4[rand], 'rb'))
+		rand_2 = random.randint(0,4)
+		rand = 19 + rand_2
+		bot.send_message(message.chat.id,nomera_list[rand])
+		bot.send_photo(message.chat.id, photo=open(f'nom4//{n_4[rand_2]}', 'rb'))
 		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
 		flag_ans = True
 		return
