@@ -39,7 +39,7 @@ pred1 = types.KeyboardButton('пред1')
 pred2 = types.KeyboardButton('пред2')
 
 markup_base = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)		#осн клавиатура
-markup_base.add(nomera_a,variant_a,teori_a)
+markup_base.add(nomera_a,teori_a)
 
 markup1 = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=5)			#клавиатура стр1
 markup1.add(nomer1,nomer2,nomer3,nomer4,nomer5,back,sled1)
@@ -107,6 +107,13 @@ def func(message):
 		flag_ans = True
 		return
 
+	elif message.text == 'номер 2':													#вывод номер2
+		rand = random.randint(7,11)
+		bot.send_message(message.chat.id,nomera_list[rand], parse_mode='html')
+		bot.send_message(message.chat.id,'введите ответ ЗАГЛАВНЫМИ буквами без точек и пробелов', parse_mode='html')
+		flag_ans = True
+		return
+
 	elif message.text == 'номер 3':													#вывод номер3
 		rand = random.randint(13,17)
 		bot.send_message(message.chat.id,nomera_list[rand])
@@ -138,7 +145,8 @@ def func(message):
 		else:														#вывод если неправильно номер 
 			otvet = types.InlineKeyboardMarkup(row_width=1)			
 			button1 = types.InlineKeyboardButton("Правильный ответ!", callback_data ='1')
-			otvet.add(button1)
+			button2 = types.InlineKeyboardButton("Теория", callback_data ='2')
+			otvet.add(button1, button2)
 			bot.send_message(message.chat.id,'Ответ неправильный, если есть трудности посмотри теорию, а также можешь узнать правильный ответ.',reply_markup=otvet,parse_mode='html')
 	
 
@@ -151,6 +159,9 @@ def callback_inline(call):
 		if call.data == "1":
 			bot.send_message(call.message.chat.id,answ_list[rand])
 			flag_ans = False
-			
+
+		elif call.data == '2':
+			bot.send_message(call.message.chat.id,'теория будет позже')
+			flag_ans = False
 
 bot.polling(none_stop=True)		
