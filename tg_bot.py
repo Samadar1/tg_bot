@@ -4,6 +4,7 @@ from sys import flags
 import telebot
 from telebot import types
 import random
+import os
 
 
 bot = telebot.TeleBot('5491906660:AAFP9IUsQ6hvPsG4G48CHq2AYk3GdQKnkQc')
@@ -65,12 +66,24 @@ with open('answ.txt',encoding='UTF-8') as file:
 		x_str = x_str.strip('\n')
 		answ_list.append(x_str)
 
+n_4 = os.listdir("nom4")
+print(n_4)
 
 
 @bot.message_handler(commands=["start"])									#старт
 def start(message):
 	mess = 'ку это бот по подготовке к огэ. Напиши команду /buttons'
 	bot.send_message(message.chat.id, mess, parse_mode='html')
+
+
+@bot.message_handler(commands=["help"])
+def com(message):
+    markup = types.ReplyKeyboardMarkup()
+    nomera = types.KeyboardButton('номера')
+    variant = types.KeyboardButton('составить вариант')
+    teori = types.KeyboardButton('теория к заданиям')
+    markup.add(nomera,variant,teori)
+    bot.send_message(message.chat.id,'ввыбор категории', reply_markup=markup)
 
 @bot.message_handler(commands=["buttons"])
 def com(message):																					#начало	
@@ -121,6 +134,13 @@ def func(message):
 		flag_ans = True
 		return
 
+	elif message.text == 'номер 4':													#вывод номер4
+		rand = random.randint(0,4)
+		bot.send_photo(message.chat_id, photo=open(n_4[rand], 'rb'))
+		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
+		flag_ans = True
+		return
+
 	elif message.text == 'номер 5':													#вывод номер5
 		rand = random.randint(25,29)
 		bot.send_message(message.chat.id,nomera_list[rand])
@@ -165,3 +185,6 @@ def callback_inline(call):
 			flag_ans = False
 
 bot.polling(none_stop=True)		
+
+x = random.randint()
+print(x)
