@@ -17,16 +17,16 @@ nomera_a = types.KeyboardButton('номера')					#кнопки осн
 variant_a = types.KeyboardButton('составить вариант')		
 teori_a = types.KeyboardButton('теория к заданиям')
 
-nomer1 = types.KeyboardButton('номер 1')					#кнопки номеров 1- 15
-nomer2 = types.KeyboardButton('номер 2')
-nomer3 = types.KeyboardButton('номер 3')
-nomer4 = types.KeyboardButton('номер 4')
-nomer5 = types.KeyboardButton('номер 5')
+nomer1 = types.KeyboardButton('номер 1')#!					#кнопки номеров 1- 15    
+nomer2 = types.KeyboardButton('номер 2')#!					
+nomer3 = types.KeyboardButton('номер 3')#!
+nomer4 = types.KeyboardButton('номер 4')#!
+nomer5 = types.KeyboardButton('номер 5')#!
 nomer6 = types.KeyboardButton('номер 6')
-nomer7 = types.KeyboardButton('номер 7')
-nomer8 = types.KeyboardButton('номер 8')
+nomer7 = types.KeyboardButton('номер 7')#!
+nomer8 = types.KeyboardButton('номер 8')#!
 nomer9 = types.KeyboardButton('номер 9')
-nomer10 = types.KeyboardButton('номер 10')
+nomer10 = types.KeyboardButton('номер 10')#!
 nomer11 = types.KeyboardButton('номер 11')
 nomer12 = types.KeyboardButton('номер 12')
 nomer13 = types.KeyboardButton('номер 13')
@@ -156,9 +156,16 @@ def func(message):
 		bot.send_message(message.chat.id,'введите ответ  заглавными буквами без пробелов и запятых', parse_mode='html')
 		flag_ans = True
 		return
-
+		
 	elif message.text == 'номер 8':													#вывод номер8
 		rand = random.randint(43,47)
+		bot.send_message(message.chat.id,nomera_list[rand])
+		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
+		flag_ans = True
+		return
+
+	elif message.text == 'номер 10':													#вывод номер10
+		rand = random.randint(55,59)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
 		flag_ans = True
