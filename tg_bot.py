@@ -156,6 +156,13 @@ def func(message):
 		bot.send_message(message.chat.id,'введите ответ  заглавными буквами без пробелов и запятых', parse_mode='html')
 		flag_ans = True
 		return
+
+	elif message.text == 'номер 8':													#вывод номер8
+		rand = random.randint(43,47)
+		bot.send_message(message.chat.id,nomera_list[rand])
+		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
+		flag_ans = True
+		return
 	
 	elif flag_ans == False:																				#текст не распознан
 		bot.send_message(message.chat.id,'бот не распознаёт ваше сообщение', parse_mode='html')
