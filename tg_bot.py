@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 
-from sys import flags
 import telebot
 from telebot import types
 import random
