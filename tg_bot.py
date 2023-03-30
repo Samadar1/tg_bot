@@ -71,7 +71,7 @@ n_4 = os.listdir("nom4")
 
 @bot.message_handler(commands=["start"])									#старт
 def start(message):
-	mess = 'ку это бот по подготовке к огэ. Напиши команду /buttons'
+	mess = 'Привет это бот по подготовке к огэ. Напиши команду /buttons'
 	bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
