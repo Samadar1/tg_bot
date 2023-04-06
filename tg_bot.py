@@ -97,6 +97,7 @@ def func(message):
 
 	if(message.text =='номера') or (message.text =='пред1'):										#номера 1-5 стр1
 		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup1)
+		flag_ans = False
 
 	elif (message.text == "след1") or (message.text =='пред2'):											#номера 6-10 стр2
 		bot.send_message(message.chat.id,'выбери номер', reply_markup=markup2)
@@ -149,6 +150,11 @@ def func(message):
 		flag_ans = True
 		return
 
+	elif message.text == 'номер 6':													#вывод номер6
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+
 	elif message.text == 'номер 7':													#вывод номер7
 		rand = random.randint(37,41)
 		bot.send_message(message.chat.id,nomera_list[rand])
@@ -163,15 +169,45 @@ def func(message):
 		flag_ans = True
 		return
 
+	elif message.text == 'номер 9':													#вывод номер9
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+
 	elif message.text == 'номер 10':													#вывод номер10
 		rand = random.randint(55,59)
 		bot.send_message(message.chat.id,nomera_list[rand])
 		bot.send_message(message.chat.id,'введите ответ только число', parse_mode='html')
 		flag_ans = True
 		return
+	elif message.text == 'номер 11':													#вывод номер11
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+	elif message.text == 'номер 12':													#вывод номер12
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+
+	elif message.text == 'номер 13':													#вывод номер13
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+
+	elif message.text == 'номер 14':													#вывод номер14
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
+
+	elif message.text == 'номер 11':													#вывод номер15
+		bot.send_message(message.chat.id,'Номер не готов.', parse_mode='html')
+		flag_ans = True
+		return
 	
 	elif flag_ans == False:																				#текст не распознан
 		bot.send_message(message.chat.id,'бот не распознаёт ваше сообщение', parse_mode='html')
+
+
 
 	if flag_ans == True:												#проверка номера если прав
 		if (message.text == answ_list[rand]):
@@ -196,8 +232,11 @@ def callback_inline(call):
 			flag_ans = False
 
 		elif call.data == '2':
-			bot.send_message(call.message.chat.id,'теория будет позже')
+			bot.send_message(call.message.chat.id,'Это не полная теория. Она будет дополненна позже.')
+			bot.send_document(call.message.chat.id, document=open('C:\\Users\\urapo\\Documents\\GitHub\\tg_bot\\proekt.docx', 'rb'))
 			flag_ans = False
+
+
 
 bot.polling(none_stop=True)		
 
