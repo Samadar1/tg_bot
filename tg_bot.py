@@ -12,7 +12,7 @@ rand = 0			#глобальные переменные
 flag_ans = False
 
 
-nomera_a = types.KeyboardButton('номера')					#кнопки ос
+nomera_a = types.KeyboardButton('номера')					#кнопки осghjk
 variant_a = types.KeyboardButton('составить вариант')		
 teori_a = types.KeyboardButton('теория к заданиям')
 
